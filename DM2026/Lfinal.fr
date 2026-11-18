@@ -1,0 +1,68 @@
+ (*En este archivo se escribieron los términos correspondientes a las interacciones de los determinantes*)
+ M$ModelName = "Potential of determinant terms";
+
+M$Information = {
+  Authors      -> {"R G, Escorcia"},
+  Institutions -> {"UAEH / ICBI-LiFTA"},
+  Emails       -> {"es339601@uaeh.edu.mx"},
+  Date         -> "July, 2025",
+  References   -> {""}
+};
+DR := (1/6) * 
+  Sum[ 
+    Eps[a, b, c] * Eps[i, j, k] * 
+    HC[phiR[a, i]] * phiR[a, i] *
+    HC[phiR[b, j]] * phiR[b, j] *
+    HC[phiR[c, k]] * phiR[c, k],
+    {a, 1, 3}, {b, 1, 3}, {c, 1, 3},
+    {i, 1, 3}, {j, 1, 3}, {k, 1, 3}
+  ];
+DL := (1/6) * 
+  Sum[ 
+    Eps[a, b, c] * Eps[i, j, k] * 
+    HC[phiL[a, i]] * phiL[a, i] *
+    HC[phiL[b, j]] * phiL[b, j] *
+    HC[phiL[c, k]] * phiL[c, k],
+    {a, 1, 3}, {b, 1, 3}, {c, 1, 3},
+    {i, 1, 3}, {j, 1, 3}, {k, 1, 3}
+  ];
+M$Parameters = {
+   	gP37 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "D_R"    	
+  	},
+   	gP38 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "D_L"    	
+  	},
+  	lh14 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 5) Acop Higgs DR"    	
+  	},
+  	lh15 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 5) Acop Higgs DL"    	
+  	},
+  	lh16 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 7) Acop Higgs^2 DL"    	
+  	},
+  	lh17 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 7) Acop Higgs^2 DR"    	
+  	}
+};
+(*La primera parte es la correspondiente al lagrangiano del potencial y la segunda al de interacción con Higgs (5 y 7)*)
+Lfin = -(gP37 DR + gP38 DL) -(vev^2/2 + vev * H + H^2/2)*(lh14*DR + lh15*DL) - ((vev^2/2 + vev * H + H^2/2)^2)*(lh16*DL + lh17*DR);

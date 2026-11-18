@@ -1,0 +1,100 @@
+M$ModelName = "SU(3) Yukawa Sector (Right)";
+
+M$Information = {
+  Authors      -> {"R G, Escorcia"},
+  Institutions -> {"UAEH / ICBI-LiFTA"},
+  Emails       -> {"es339601@uaeh.edu.mx"},
+  Date         -> "July, 2025",
+  References   -> {""}
+};
+
+(* Índices *)
+IndexRange[Index[Right]] = Range[3];
+IndexStyle[Right, r];
+
+M$ClassesDescription = {
+(*Campos físicos*)
+	S[122] == {
+	  ClassName       -> zr1,
+	  ClassMembers    -> {zr11, zr12, zr13},
+	  Indices         -> {Index[Generation]},
+	  FlavorIndex     -> Generation,
+	  SelfConjugate   -> True,
+	  Mass            -> {Mzr1, {mZR11, 100}, {mZR12, 100}, {mZR13, 100}},
+	  Width           -> {Wzr1, {wzr11, Internal}, {wzr12, Internal}, {wzr13, Internal}},
+	  PropagatorLabel -> {"zr1", "zr11", "zr12", "zr13"},
+	  PropagatorType  -> ScalarDash,
+	  PropagatorArrow -> None,
+	  PDG             -> {11000, 11001, 11002},
+	  ParticleName    -> {"~zr11", "~zr12", "~zr13"},
+	  FullName        -> {"ZR11", "ZR12", "ZR13"}
+	},
+
+	S[123] == {
+	  ClassName       -> zr2,
+	  ClassMembers    -> {zr21, zr22, zr23},
+	  Indices         -> {Index[Generation]},
+	  FlavorIndex     -> Generation,
+	  SelfConjugate   -> True,
+	  Mass            -> {Mzr2, {mZR21, 100}, {mZR22, 100}, {mZR23, 100}},
+	  Width           -> {Wzr2, {wzr21, Internal}, {wzr22, Internal}, {wzr23, Internal}},
+	  PropagatorLabel -> {"zr2", "zr21", "zr22", "zr23"},
+	  PropagatorType  -> ScalarDash,
+	  PropagatorArrow -> None,
+	  PDG             -> {11003, 11004, 11005},
+	  ParticleName    -> {"~zr21", "~zr22", "~zr23"},
+	  FullName        -> {"ZR21", "ZR22", "ZR23"}
+	},
+
+	S[124] == {
+	  ClassName       -> zr3,
+	  ClassMembers    -> {zr31, zr32, zr33},
+	  Indices         -> {Index[Generation]},
+	  FlavorIndex     -> Generation,
+	  SelfConjugate   -> True,
+	  Mass            -> {Mzr3, {mZR31, 100}, {mZR32, 100}, {mZR33, 100}},
+	  Width           -> {Wzr3, {wzr31, Internal}, {wzr32, Internal}, {wzr33, Internal}},
+	  PropagatorLabel -> {"zr3", "zr31", "zr32", "zr33"},
+	  PropagatorType  -> ScalarDash,
+	  PropagatorArrow -> None,
+	  PDG             -> {11006, 11007, 11008},
+	  ParticleName    -> {"~zr31", "~zr32", "~zr33"},
+	  FullName        -> {"ZR31", "ZR32", "ZR33"}
+	},
+
+(*Campo no físico*)
+	S[125] == {
+	  ClassName       -> phiR,
+	  Indices         -> {Index[Right], Index[Generation]},
+	  Unphysical      -> True,
+	  SelfConjugate   -> True,
+	  ParticleName    -> "phiR",
+	  FullName        -> "Structured scalar matrix of triplets"
+	}
+};
+M$Parameters = {
+	mR == {
+	  ParameterType -> Internal,
+	  ComplexParameter -> False,
+	  Value -> (mZL11^2)/2 - (lh2 vev^2)/2 - (lh11 vev^4)/4,
+	  Description -> "Parametro de masa R en términos de mZL11"
+	}
+};
+(*Entradas del triplete*)
+phiR[1, f_] := zr1[f];
+phiR[2, f_] := zr2[f];
+phiR[3, f_] := zr3[f];
+
+(* Definiciones de las masas físicas *)
+mZR[1,1] := mZR11;
+mZR[1,2] := mZR12;
+mZR[1,3] := mZR13;
+mZR[2,1] := mZR21;
+mZR[2,2] := mZR22;
+mZR[2,3] := mZR23;
+mZR[3,1] := mZR31;
+mZR[3,2] := mZR32;
+mZR[3,3] := mZR33;
+
+(* Lagrangiano del sector derecho *)
+Ldmr = (1/2) del[phiR[r, f], mu] del[phiR[r, f], mu];

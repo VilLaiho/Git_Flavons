@@ -1,0 +1,262 @@
+M$ModelName = "SU(3) Yukawa Sector (Coupling constants and potential)";
+
+M$Information = {
+  Authors      -> {"R G, Escorcia"},
+  Institutions -> {"UAEH / ICBI-LiFTA"},
+  Emails       -> {"es339601@uaeh.edu.mx"},
+  Date         -> "July, 2025",
+  References   -> {""}
+};
+(*Parametros del potencial*)
+M$Parameters = {
+  	gLR == {
+  		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acoplamiento lr"  
+  	},
+  	gLL == {
+  		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acoplamiento ll"  
+  	
+  	},
+  	gRR == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acoplamiento rr"    	
+  	},
+  	gPT == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acoplamiento Gamma (Paper)"    	
+  	},
+  	gP1 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "gLPHI"    	
+  	},
+  	gP2 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "gRPhi"    	
+  	},
+  	gP3 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "gPhiPhi"    	
+  	},
+  	gP4 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "gCLL"    	
+  	},
+   	gP5 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "gCRR"    	
+  	},
+   	gP6 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "gCLR"    	
+  	},
+   	gP7 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_LB"    	
+  	},
+   	gP8 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_RB"    	
+  	},
+   	gP9 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_PhiB"    	
+  	},
+   	gP10 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L A_L A_L"    	
+  	},
+   	gP11 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R A_R A_R"    	
+  	},
+   	gP12 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi A_phi A_phi"    	
+  	},
+   	gP13 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L A_ph A_R"    	
+  	},
+   	gP14 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L A_L A_phi"    	
+  	},
+   	gP15 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R A_R A_phi"    	
+  	},
+   	gP16 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi A_phi A_L"    	
+  	},
+   	gP17 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi A_phi A_R"    	
+  	},
+   	gP18 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L C_LL"    	
+  	},
+   	gP19 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L C_RR"    	
+  	},
+   	gP20 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L C_LL"    	
+  	},
+   	gP21 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R C_LL"    	
+  	},
+   	gP22 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R C_RR"    	
+  	},
+   	gP23 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R C_LR"    	
+  	},
+   	gP24 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi C_LL"    	
+  	},
+   	gP25 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi C_RR"    	
+  	},  	
+   	gP26 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi C_RR"    	
+  	},
+   	gP27 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "B^2"    	
+  	},
+   	gP28 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L A_L B"    	
+  	},
+   	gP29 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L A_R B"    	
+  	},
+   	gP30 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_L A_Phi B"    	
+  	},
+   	gP31 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R A_R B"    	
+  	},
+   	gP32 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_R A_phi B"    	
+  	},
+   	gP33 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "A_phi A_phi B"    	
+  	},
+   	gP34 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "C_LL B"    	
+  	},
+   	gP35 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "C_RR B"    	
+  	},
+   	gP36 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "C_LR B"    	
+  	}
+};
+(*Invariantes*)
+Aph := Sum[HC[phiTilde[l,r]] phiTilde[l,r], {r, 1, 3},{l, 1, 3}];
+AP := Sum[phiL[l, g] * HC[phiTilde][l, r] * phiR[r, g], {r, 1, 3}, {f, 1, 3}, {l, 1, 3}];
+AR := Sum[HC[phiR[r, f]] phiR[r, f], {r, 1, 3}, {f, 1, 3}];
+AL := Sum[HC[phiL[l, f]] phiL[l, f], {l, 1, 3}, {f, 1, 3}];
+CLL := Sum[phiL[l, f] HC[phiL[l, f]] HC[phiL[l, f]] phiL[l, f], {l, 1, 3}, {f, 1, 3}];
+CRR := Sum[phiR[r, f] HC[phiR[r, f]] HC[phiR[r, f]] phiR[r, f], {r, 1, 3}, {f, 1, 3}];
+CLR := Sum[ phiL[l, f] HC[phiL[l, f]] HC[phiR[r, f]] phiR[r, f] , {r, 1, 3}, {l, 1, 3}, {f, 1, 3}];
+Ldmp = -(mL AL + mR AR + mP Aph + gLR AL AR + gLL AL AL + gRR AR AR + gP1 AL Aph + gP2 AR Aph + gP3 Aph Aph + gPT AP + gP4 CLL + gP5 CRR + gP6 CLR + gP7 AL AP + gP8 AR AP + gP9 Aph AP + gP10 AL AL AL + gP11 AR AR AR + gP12 Aph Aph Aph + gP13 AL Aph AR + gP14 AL AL Aph + gP15 AR AR Aph + gP16 Aph Aph AL + gP17 Aph Aph AR + gP18 AL CLL + gP19 AL CRR + gP20 AL CLR + gP21 AR CLL + gP22 AR CRR + gP23 AR CLR + gP24 Aph CLL + gP25 Aph CRR + gP26 Aph CLR + gP27 AP^2 + gP28 AL AL AP + gP29 AL AR AP + gP30 AL Aph AP + gP31 AR AR AP + gP32 AR Aph AP + gP33 Aph Aph AP + gP34 CLL AP + gP35 CRR AP + gP36 CLR AP);

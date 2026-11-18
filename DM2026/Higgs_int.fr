@@ -1,0 +1,95 @@
+M$ModelName = "Interacciòn con el Higgs (acoplamientos y lagrangiano)";
+
+M$Information = {
+  Authors      -> {"R G, Escorcia"},
+  Institutions -> {"UAEH / ICBI-LiFTA"},
+  Emails       -> {"es339601@uaeh.edu.mx"},
+  Date         -> "July, 2025",
+  References   -> {""}
+};
+(*Acoplamientos*)
+M$Parameters = {
+  	lh1 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acop Higgs AL"    	
+  	}, 
+  	lh2 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acop Higgs AR"    	
+  	}, 
+  	lh3 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acop Higgs Aph"    	
+  	},
+  	lh4 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "Acop Higgs AR"    	
+  	},
+  	lh5 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs AL^2"    	
+  	},
+  	lh6 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs AR^2"    	
+  	},
+  	lh7 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs Aph^2"    	
+  	},
+  	lh8 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs AL AR"    	
+  	},
+  	lh9 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs AL Aphi"    	
+  	},
+  	lh10 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs AR Aphi"    	
+  	},
+  	lh11 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs^2 AR"    	
+  	},
+  	lh12 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs^2 AL"    	
+  	},
+  	lh13 == {
+		ParameterType -> External,
+		ComplexParameter -> False,
+		Value -> 1,
+		Description -> "(Orden 6) Acop Higgs^2 Aphi"    	
+  	}
+};
+(*Lagrangiano*)
+(*Estàn separados por ordenes: 4,6 (5 y 7 están en el otro potencial)*)
+LHig = -(vev^2/2 + vev * H + H^2/2)*(lh1* AL + lh2* AR + lh3 Aph) - (vev^2/2 + vev * H + H^2/2)*(lh5 AL^2 + lh6 AR^2 + lh7 Aph^2 + lh8 AL AR + lh9 AL Aph + lh10 AR Aph + (vev^2/2 + vev * H + H^2/2)*(lh11*AR + lh12*AL + lh13*Aph));
+
+

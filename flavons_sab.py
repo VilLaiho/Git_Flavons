@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Escáner avanzado del espacio de parámetros de micrOMEGAs para flavons2 / IDM.
 Diseñado para explorar el espacio de parámetros variando mZL11 como candidato a DM (~ZL11)
 y manteniendo mZL22 controlada por encima para asegurar la jerarquía de masas.
 
 Uso:
-    python3 version_sabado_busqueda_flavons.py --regime high_mass --samples 500
+    python3 version_sabado_busqueda_flavons.py --regime high_mass --samples "n"
 """
 
 import os

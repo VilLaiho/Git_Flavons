@@ -1,0 +1,98 @@
+M$ModelName = "SU(3) Yukawa Sector (Left-Right)";
+
+M$Information = {
+  Authors      -> {"R G, Escorcia"},
+  Institutions -> {"UAEH / ICBI-LiFTA"},
+  Emails       -> {"es339601@uaeh.edu.mx"},
+  Date         -> "July, 2025",
+  References   -> {""}
+};
+
+M$ClassesDescription = {
+
+  (* Tripletes físicos (índice derecho) *)
+  S[140] == {
+    ClassName       -> phiT1,
+    ClassMembers    -> {phiT11, phiT12, phiT13},
+    Indices         -> {Index[Right]},
+    FlavorIndex     -> Right,
+    SelfConjugate   -> True,
+    Mass            -> {MphiT1, {mPhiT11, 100}, {mPhiT12, 100}, {mPhiT13, 100}},
+    Width           -> {WphiT1, {wphiT11, Internal}, {wphiT12, Internal}, {wphiT13, Internal}},
+    PropagatorLabel -> {"phiT1", "phiT11", "phiT12", "phiT13"},
+    PropagatorType  -> ScalarDash,
+    PropagatorArrow -> None,
+    PDG             -> {13000, 13001, 13002},
+    ParticleName    -> {"phiT11", "phiT12", "phiT13"},
+    FullName        -> {"PhiT11", "PhiT12", "PhiT13"}
+  },
+
+  S[141] == {
+    ClassName       -> phiT2,
+    ClassMembers    -> {phiT21, phiT22, phiT23},
+    Indices         -> {Index[Right]},
+    FlavorIndex     -> Right,
+    SelfConjugate   -> True,
+    Mass            -> {MphiT2, {mPhiT21, 100}, {mPhiT22, 100}, {mPhiT23, 100}},
+    Width           -> {WphiT2, {wphiT21, Internal}, {wphiT22, Internal}, {wphiT23, Internal}},
+    PropagatorLabel -> {"phiT2", "phiT21", "phiT22", "phiT23"},
+    PropagatorType  -> ScalarDash,
+    PropagatorArrow -> None,
+    PDG             -> {13003, 13004, 13005},
+    ParticleName    -> {"phiT21", "phiT22", "phiT23"},
+    FullName        -> {"PhiT21", "PhiT22", "PhiT23"}
+  },
+
+  S[142] == {
+    ClassName       -> phiT3,
+    ClassMembers    -> {phiT31, phiT32, phiT33},
+    Indices         -> {Index[Right]},
+    FlavorIndex     -> Right,
+    SelfConjugate   -> True,
+    Mass            -> {MphiT3, {mPhiT31, 100}, {mPhiT32, 100}, {mPhiT33, 100}},
+    Width           -> {WphiT3, {wphiT31, Internal}, {wphiT32, Internal}, {wphiT33, Internal}},
+    PropagatorLabel -> {"phiT3", "phiT31", "phiT32", "phiT33"},
+    PropagatorType  -> ScalarDash,
+    PropagatorArrow -> None,
+    PDG             -> {13006, 13007, 13008},
+    ParticleName    -> {"phiT31", "phiT32", "phiT33"},
+    FullName        -> {"PhiT31", "PhiT32", "PhiT33"}
+  },
+
+  (* Campo estructurado *)
+  S[143] == {
+    ClassName       -> phiTilde,
+    Indices         -> {Index[Left], Index[Right]},
+    Unphysical      -> True,
+    SelfConjugate   -> True,
+    ParticleName    -> "phiT",
+    FullName        -> "Structured scalar (3,3bar)"
+  }
+};
+M$Parameters = {
+	mP == {
+	  ParameterType -> Internal,
+	  ComplexParameter -> False,
+	  Value -> (mPhiT11^2)/2 - (lh3 vev^2)/2 - (lh13 vev^4)/4,
+	  Description -> "Parametro de masa PHI en términos de mPhiT11"
+	}
+};
+(*Entradas del triplete*)
+phiTilde[1, r_] := phiT1[r];
+phiTilde[2, r_] := phiT2[r];
+phiTilde[3, r_] := phiT3[r];
+(*Masas de cada campo*)
+mPhiT[1,1] := mPhiT11;   
+mPhiT[1,2] := mPhiT12;   
+mPhiT[1,3] := mPhiT13;
+mPhiT[2,1] := mPhiT21;
+mPhiT[2,2] := mPhiT22;
+mPhiT[2,3] := mPhiT23;
+mPhiT[3,1] := mPhiT31;
+mPhiT[3,2] := mPhiT32;   
+mPhiT[3,3] := mPhiT33;
+(*Lagrangiano del Phi*)
+LphiT = Expand[(1/2) del[phiTilde[l, r], mu] del[phiTilde[l, r], mu]];
+
+
+

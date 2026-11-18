@@ -1,0 +1,98 @@
+M$ModelName = "SU(3) Yukawa Sector (Left)";
+
+M$Information = {
+  Authors      -> {"R G, Escorcia"},
+  Institutions -> {"UAEH / ICBI-LiFTA"},
+  Emails       -> {"es339601@uaeh.edu.mx"},
+  Date         -> "July, 2025",
+  References   -> {""}
+};
+
+(* Índices *)
+IndexRange[Index[Left]] = Range[3];
+IndexStyle[Left, l];
+
+M$ClassesDescription = {
+(*Campos físicos*)
+	S[126] == {
+	  ClassName       -> zl1,
+	  ClassMembers    -> {zl11, zl12, zl13},
+	  Indices         -> {Index[Generation]},
+	  FlavorIndex     -> Generation,
+	  SelfConjugate   -> True,
+	  Mass            -> {Mzl1, {mZL11, 100}, {mZL12, 100}, {mZL13, 100}},
+	  Width           -> {Wzl1, {wzl11, Internal}, {wzl12, Internal}, {wzl13, Internal}},
+	  PropagatorLabel -> {"zl1", "zl11", "zl12", "zl13"},
+	  PropagatorType  -> ScalarDash,
+	  PropagatorArrow -> None,
+	  PDG             -> {12000, 12001, 12002},
+	  ParticleName    -> {"~zl11", "~zl12", "~zl13"},
+	  FullName        -> {"ZL11", "ZL12", "ZL13"}
+	},
+
+	S[127] == {
+	  ClassName       -> zl2,
+	  ClassMembers    -> {zl21, zl22, zl23},
+	  Indices         -> {Index[Generation]},
+	  FlavorIndex     -> Generation,
+	  SelfConjugate   -> True,
+	  Mass            -> {Mzl2, {mZL21, 100}, {mZL22, 100}, {mZL23, 100}},
+	  Width           -> {Wzl2, {wzl21, Internal}, {wzl22, Internal}, {wzl23, Internal}},
+	  PropagatorLabel -> {"zl2", "zl21", "zl22", "zl23"},
+	  PropagatorType  -> ScalarDash,
+	  PropagatorArrow -> None,
+	  PDG             -> {12003, 12004, 12005},
+	  ParticleName    -> {"~zl21", "~zl22", "~zl23"},
+	  FullName        -> {"ZL21", "ZL22", "ZL23"}
+	},
+
+	S[128] == {
+	  ClassName       -> zl3,
+	  ClassMembers    -> {zl31, zl32, zl33},
+	  Indices         -> {Index[Generation]},
+	  FlavorIndex     -> Generation,
+	  SelfConjugate   -> True,
+	  Mass            -> {Mzl3, {mZL31, 100}, {mZL32, 100}, {mZL33, 100}},
+	  Width           -> {Wzl3, {wzl31, Internal}, {wzl32, Internal}, {wzl33, Internal}},
+	  PropagatorLabel -> {"zl3", "zl31", "zl32", "zl33"},
+	  PropagatorType  -> ScalarDash,
+	  PropagatorArrow -> None,
+	  PDG             -> {12006, 12007, 12008},
+	  ParticleName    -> {"~zl31", "~zl32", "~zl33"},
+	  FullName        -> {"ZL31", "ZL32", "ZL33"}
+	},
+
+(*Campo no físico*)
+	S[129] == {
+	  ClassName       -> phiL,
+	  Indices         -> {Index[Left], Index[Generation]},
+	  Unphysical      -> True,
+	  SelfConjugate   -> True,
+	  ParticleName    -> "phiL",
+	  FullName        -> "Structured scalar matrix of triplets"
+	}
+};
+
+phiL[1, f_] := zl1[f];
+phiL[2, f_] := zl2[f];
+phiL[3, f_] := zl3[f];
+
+M$Parameters = {
+	mL == {
+	  ParameterType -> Internal,
+	  ComplexParameter -> False,
+	  Value -> (mZL11^2)/2 - (lh1 vev^2)/2 - (lh12 vev^4)/4,
+	  Description -> "Parametro de masa L en términos de mZL11"
+	}
+};
+mZL[1,1] := mZL11;
+mZL[1,2] := mZL12;
+mZL[1,3] := mZL13;
+mZL[2,1] := mZL21;
+mZL[2,2] := mZL22;
+mZL[2,3] := mZL23;
+mZL[3,1] := mZL31;
+mZL[3,2] := mZL32;
+mZL[3,3] := mZL33;
+(*Lagrangiano izquierdo*)
+Ldml = Expand[(1/2) del[phiL[l, f], mu] del[phiL[l, f], mu]];

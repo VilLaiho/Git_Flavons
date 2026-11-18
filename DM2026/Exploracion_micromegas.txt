@@ -1,0 +1,17 @@
+cd micrOMEGAS/
+cd micromegas_6.2.3/
+make
+cd flavons2
+make main=main.cpp
+./main data.par
+
+
+
+
+*****NOTAS*****
+Buscar combinaciones tales que:
+***El más ligero es el candidato
+***OMEGA del orden 1.2E-1
+***Hacer script
+Explorar por ordenes de magnitud (E-n)
+
