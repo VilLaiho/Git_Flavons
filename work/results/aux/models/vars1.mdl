@@ -1,0 +1,77 @@
+Potencial ZX2
+ Parameters
+  Name         | Value       |> Comment                                                                <|
+aEWM1          |127.9        |Inverse of the EW coupling constant at the Z pole                         |
+Gf             |0.0000116637 |Fermi constant                                                            |
+aS             |0.1184       |Strong coupling constant at the Z pole                                    |
+ymdo           |0.00504      |Down Yukawa mass                                                          |
+ymup           |0.00255      |Up Yukawa mass                                                            |
+yms            |0.101        |Strange Yukawa mass                                                       |
+ymc            |1.27         |Charm Yukawa mass                                                         |
+ymb            |4.7          |Bottom Yukawa mass                                                        |
+ymt            |172          |Top Yukawa mass                                                           |
+yme            |0.000511     |Electron Yukawa mass                                                      |
+ymm            |0.10566      |Muon Yukawa mass                                                          |
+ymtau          |1.777        |Tau Yukawa mass                                                           |
+cabi           |0.227736     |Cabibbo angle                                                             |
+lP             |1            |Acoplamiento Phi                                                          |
+lL1            |1            |Acoplamiento left                                                         |
+lR1            |1            |Acoplamiento right                                                        |
+gLR            |1            |Acoplamiento lr                                                           |
+gLL            |1            |Acoplamiento ll                                                           |
+gRR            |1            |Acoplamiento rr                                                           |
+gLP            |1            |Acoplamiento lp                                                           |
+gRP            |1            |Acoplamiento rp                                                           |
+K1             |1            |Acoplamiento hlr                                                          |
+K2             |1            |Acoplamiento hrr                                                          |
+K3             |1            |Acoplamiento hll                                                          |
+K4             |1            |Acoplamiento hhl                                                          |
+K5             |1            |Acoplamiento hhr                                                          |
+K6             |1            |Acoplamiento hhp                                                          |
+K7             |1            |Acoplamiento hlp                                                          |
+K8             |1            |Acoplamiento hrp                                                          |
+GG             |1.21977796370|Strong coupling constant at the Z pole   This value will be ignored and ca|
+MZ             |91.1876      |Mass of G0.                                                               |
+Me             |0.000511     |Mass of e.                                                                |
+MMU            |0.10566      |Mass of mu.                                                               |
+MTA            |1.777        |Mass of ta.                                                               |
+MU             |0.00255      |Mass of u.                                                                |
+MC             |1.27         |Mass of c.                                                                |
+MT             |172          |Mass of t.                                                                |
+MD             |0.00504      |Mass of d.                                                                |
+MS             |0.101        |Mass of s.                                                                |
+MB             |4.7          |Mass of b.                                                                |
+MH             |125          |Mass of H.                                                                |
+mX11           |255          |Mass of X11.                                                              |
+mX12           |255          |Mass of X12.                                                              |
+mX13           |255          |Mass of X13.                                                              |
+mX21           |255          |Mass of X21.                                                              |
+mX22           |255          |Mass of X22.                                                              |
+mX23           |255          |Mass of X23.                                                              |
+mX31           |255          |Mass of X31.                                                              |
+mX32           |255          |Mass of X32.                                                              |
+mX33           |255          |Mass of X33.                                                              |
+mZL11          |255          |Mass of ZL11.                                                             |
+mZL12          |255          |Mass of ZL12.                                                             |
+mZL13          |255          |Mass of ZL13.                                                             |
+mZL21          |255          |Mass of ZL21.                                                             |
+mZL22          |255          |Mass of ZL22.                                                             |
+mZL23          |255          |Mass of ZL23.                                                             |
+mZL31          |255          |Mass of ZL31.                                                             |
+mZL32          |255          |Mass of ZL32.                                                             |
+mZL33          |255          |Mass of ZL33.                                                             |
+mZR11          |255          |Mass of ZR11.                                                             |
+mZR12          |255          |Mass of ZR12.                                                             |
+mZR13          |255          |Mass of ZR13.                                                             |
+mZR21          |255          |Mass of ZR21.                                                             |
+mZR22          |255          |Mass of ZR22.                                                             |
+mZR23          |255          |Mass of ZR23.                                                             |
+mZR31          |255          |Mass of ZR31.                                                             |
+mZR32          |255          |Mass of ZR32.                                                             |
+mZR33          |255          |Mass of ZR33.                                                             |
+%WZ            |2.4952       |Width of G0.                                                              |
+%WW            |2.085        |Width of GP.                                                              |
+%WT            |1.50833649   |Width of t.                                                               |
+%WH            |0.00407      |Width of H.                                                               |
+E              |2.71828182845|The base of the natural logarithm.                                        |
+Pi             |3.14159265358|The circumference of a circle divided by the diameter.                    |

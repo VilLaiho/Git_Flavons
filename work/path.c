@@ -1,0 +1,1 @@
+char * WORK="/home/villaiho10/Documentos/micrOMEGAs/micromegas_6.2.3/flavons2/work";

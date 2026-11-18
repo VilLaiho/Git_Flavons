@@ -1,0 +1,745 @@
+Potencial ZX2
+ Constraints
+  Name         |> Expression                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <|
+%*slhaFound    |1+access("vars1.lha", 0)                                                                                       %Check whether LHA file is present.
+%*rdSLHA       |if(slhaFound,slhaRead("vars1.lha", 0),-1)                                                                      %Read LHA file.
+%cabi          |if(slhaFound,if(slhaValExists("CKMBLOCK",1,1),slhaVal("CKMBLOCK",0,1,1),cabiDef),cabiDef)                      %Cabibbo angle                                     
+%aEWM1         |if(slhaFound,if(slhaValExists("SMINPUTS",1,1),slhaVal("SMINPUTS",0,1,1),aEWM1Def),aEWM1Def)                    %Inverse of the EW coupling constant at the Z pole 
+%Gf            |if(slhaFound,if(slhaValExists("SMINPUTS",1,2),slhaVal("SMINPUTS",0,1,2),GfDef),GfDef)                          %Fermi constant                                    
+%aS            |if(slhaFound,if(slhaValExists("SMINPUTS",1,3),slhaVal("SMINPUTS",0,1,3),aSDef),aSDef)                          %Strong coupling constant at the Z pole            
+%ymdo          |if(slhaFound,if(slhaValExists("YUKAWA",1,1),slhaVal("YUKAWA",0,1,1),ymdoDef),ymdoDef)                          %Down Yukawa mass                                  
+%ymup          |if(slhaFound,if(slhaValExists("YUKAWA",1,2),slhaVal("YUKAWA",0,1,2),ymupDef),ymupDef)                          %Up Yukawa mass                                    
+%yms           |if(slhaFound,if(slhaValExists("YUKAWA",1,3),slhaVal("YUKAWA",0,1,3),ymsDef),ymsDef)                            %Strange Yukawa mass                               
+%ymc           |if(slhaFound,if(slhaValExists("YUKAWA",1,4),slhaVal("YUKAWA",0,1,4),ymcDef),ymcDef)                            %Charm Yukawa mass                                 
+%ymb           |if(slhaFound,if(slhaValExists("YUKAWA",1,5),slhaVal("YUKAWA",0,1,5),ymbDef),ymbDef)                            %Bottom Yukawa mass                                
+%ymt           |if(slhaFound,if(slhaValExists("YUKAWA",1,6),slhaVal("YUKAWA",0,1,6),ymtDef),ymtDef)                            %Top Yukawa mass                                   
+%yme           |if(slhaFound,if(slhaValExists("YUKAWA",1,11),slhaVal("YUKAWA",0,1,11),ymeDef),ymeDef)                          %Electron Yukawa mass                              
+%ymm           |if(slhaFound,if(slhaValExists("YUKAWA",1,13),slhaVal("YUKAWA",0,1,13),ymmDef),ymmDef)                          %Muon Yukawa mass                                  
+%ymtau         |if(slhaFound,if(slhaValExists("YUKAWA",1,15),slhaVal("YUKAWA",0,1,15),ymtauDef),ymtauDef)                      %Tau Yukawa mass                                   
+%lP            |if(slhaFound,if(slhaValExists("FRBlock",1,1),slhaVal("FRBlock",0,1,1),lPDef),lPDef)                            %Acoplamiento Phi                                  
+%lL1           |if(slhaFound,if(slhaValExists("FRBlock",1,2),slhaVal("FRBlock",0,1,2),lL1Def),lL1Def)                          %Acoplamiento left                                 
+%lR1           |if(slhaFound,if(slhaValExists("FRBlock",1,3),slhaVal("FRBlock",0,1,3),lR1Def),lR1Def)                          %Acoplamiento right                                
+%gLR           |if(slhaFound,if(slhaValExists("FRBlock",1,4),slhaVal("FRBlock",0,1,4),gLRDef),gLRDef)                          %Acoplamiento lr                                   
+%gLL           |if(slhaFound,if(slhaValExists("FRBlock",1,5),slhaVal("FRBlock",0,1,5),gLLDef),gLLDef)                          %Acoplamiento ll                                   
+%gRR           |if(slhaFound,if(slhaValExists("FRBlock",1,6),slhaVal("FRBlock",0,1,6),gRRDef),gRRDef)                          %Acoplamiento rr                                   
+%gLP           |if(slhaFound,if(slhaValExists("FRBlock",1,7),slhaVal("FRBlock",0,1,7),gLPDef),gLPDef)                          %Acoplamiento lp                                   
+%gRP           |if(slhaFound,if(slhaValExists("FRBlock",1,8),slhaVal("FRBlock",0,1,8),gRPDef),gRPDef)                          %Acoplamiento rp                                   
+%K1            |if(slhaFound,if(slhaValExists("FRBlock",1,9),slhaVal("FRBlock",0,1,9),K1Def),K1Def)                            %Acoplamiento hlr                                  
+%K2            |if(slhaFound,if(slhaValExists("FRBlock",1,10),slhaVal("FRBlock",0,1,10),K2Def),K2Def)                          %Acoplamiento hrr                                  
+%K3            |if(slhaFound,if(slhaValExists("FRBlock",1,11),slhaVal("FRBlock",0,1,11),K3Def),K3Def)                          %Acoplamiento hll                                  
+%K4            |if(slhaFound,if(slhaValExists("FRBlock",1,12),slhaVal("FRBlock",0,1,12),K4Def),K4Def)                          %Acoplamiento hhl                                  
+%K5            |if(slhaFound,if(slhaValExists("FRBlock",1,13),slhaVal("FRBlock",0,1,13),K5Def),K5Def)                          %Acoplamiento hhr                                  
+%K6            |if(slhaFound,if(slhaValExists("FRBlock",1,14),slhaVal("FRBlock",0,1,14),K6Def),K6Def)                          %Acoplamiento hhp                                  
+%K7            |if(slhaFound,if(slhaValExists("FRBlock",1,15),slhaVal("FRBlock",0,1,15),K7Def),K7Def)                          %Acoplamiento hlp                                  
+%K8            |if(slhaFound,if(slhaValExists("FRBlock",1,16),slhaVal("FRBlock",0,1,16),K8Def),K8Def)                          %Acoplamiento hrp                                  
+%MZ            |if(slhaFound,if(slhaValExists("MASS",1,23),slhaVal("MASS",0,1,23),MZDef),MZDef)                                %Mass of G0.                                       
+%Me            |if(slhaFound,if(slhaValExists("MASS",1,11),slhaVal("MASS",0,1,11),MeDef),MeDef)                                %Mass of e.                                        
+%MMU           |if(slhaFound,if(slhaValExists("MASS",1,13),slhaVal("MASS",0,1,13),MMUDef),MMUDef)                              %Mass of mu.                                       
+%MTA           |if(slhaFound,if(slhaValExists("MASS",1,15),slhaVal("MASS",0,1,15),MTADef),MTADef)                              %Mass of ta.                                       
+%MU            |if(slhaFound,if(slhaValExists("MASS",1,2),slhaVal("MASS",0,1,2),MUDef),MUDef)                                  %Mass of u.                                        
+%MC            |if(slhaFound,if(slhaValExists("MASS",1,4),slhaVal("MASS",0,1,4),MCDef),MCDef)                                  %Mass of c.                                        
+%MT            |if(slhaFound,if(slhaValExists("MASS",1,6),slhaVal("MASS",0,1,6),MTDef),MTDef)                                  %Mass of t.                                        
+%MD            |if(slhaFound,if(slhaValExists("MASS",1,1),slhaVal("MASS",0,1,1),MDDef),MDDef)                                  %Mass of d.                                        
+%MS            |if(slhaFound,if(slhaValExists("MASS",1,3),slhaVal("MASS",0,1,3),MSDef),MSDef)                                  %Mass of s.                                        
+%MB            |if(slhaFound,if(slhaValExists("MASS",1,5),slhaVal("MASS",0,1,5),MBDef),MBDef)                                  %Mass of b.                                        
+%MH            |if(slhaFound,if(slhaValExists("MASS",1,25),slhaVal("MASS",0,1,25),MHDef),MHDef)                                %Mass of H.                                        
+%mX11          |if(slhaFound,if(slhaValExists("MASS",1,10137),slhaVal("MASS",0,1,10137),mX11Def),mX11Def)                      %Mass of X11.                                      
+%mX12          |if(slhaFound,if(slhaValExists("MASS",1,10012),slhaVal("MASS",0,1,10012),mX12Def),mX12Def)                      %Mass of X12.                                      
+%mX13          |if(slhaFound,if(slhaValExists("MASS",1,10013),slhaVal("MASS",0,1,10013),mX13Def),mX13Def)                      %Mass of X13.                                      
+%mX21          |if(slhaFound,if(slhaValExists("MASS",1,10021),slhaVal("MASS",0,1,10021),mX21Def),mX21Def)                      %Mass of X21.                                      
+%mX22          |if(slhaFound,if(slhaValExists("MASS",1,10022),slhaVal("MASS",0,1,10022),mX22Def),mX22Def)                      %Mass of X22.                                      
+%mX23          |if(slhaFound,if(slhaValExists("MASS",1,10023),slhaVal("MASS",0,1,10023),mX23Def),mX23Def)                      %Mass of X23.                                      
+%mX31          |if(slhaFound,if(slhaValExists("MASS",1,10031),slhaVal("MASS",0,1,10031),mX31Def),mX31Def)                      %Mass of X31.                                      
+%mX32          |if(slhaFound,if(slhaValExists("MASS",1,10032),slhaVal("MASS",0,1,10032),mX32Def),mX32Def)                      %Mass of X32.                                      
+%mX33          |if(slhaFound,if(slhaValExists("MASS",1,10033),slhaVal("MASS",0,1,10033),mX33Def),mX33Def)                      %Mass of X33.                                      
+%mZL11         |if(slhaFound,if(slhaValExists("MASS",1,10000),slhaVal("MASS",0,1,10000),mZL11Def),mZL11Def)                    %Mass of ZL11.                                     
+%mZL12         |if(slhaFound,if(slhaValExists("MASS",1,10001),slhaVal("MASS",0,1,10001),mZL12Def),mZL12Def)                    %Mass of ZL12.                                     
+%mZL13         |if(slhaFound,if(slhaValExists("MASS",1,10002),slhaVal("MASS",0,1,10002),mZL13Def),mZL13Def)                    %Mass of ZL13.                                     
+%mZL21         |if(slhaFound,if(slhaValExists("MASS",1,10003),slhaVal("MASS",0,1,10003),mZL21Def),mZL21Def)                    %Mass of ZL21.                                     
+%mZL22         |if(slhaFound,if(slhaValExists("MASS",1,10004),slhaVal("MASS",0,1,10004),mZL22Def),mZL22Def)                    %Mass of ZL22.                                     
+%mZL23         |if(slhaFound,if(slhaValExists("MASS",1,10005),slhaVal("MASS",0,1,10005),mZL23Def),mZL23Def)                    %Mass of ZL23.                                     
+%mZL31         |if(slhaFound,if(slhaValExists("MASS",1,10006),slhaVal("MASS",0,1,10006),mZL31Def),mZL31Def)                    %Mass of ZL31.                                     
+%mZL32         |if(slhaFound,if(slhaValExists("MASS",1,10007),slhaVal("MASS",0,1,10007),mZL32Def),mZL32Def)                    %Mass of ZL32.                                     
+%mZL33         |if(slhaFound,if(slhaValExists("MASS",1,10008),slhaVal("MASS",0,1,10008),mZL33Def),mZL33Def)                    %Mass of ZL33.                                     
+%mZR11         |if(slhaFound,if(slhaValExists("MASS",1,10009),slhaVal("MASS",0,1,10009),mZR11Def),mZR11Def)                    %Mass of ZR11.                                     
+%mZR12         |if(slhaFound,if(slhaValExists("MASS",1,10010),slhaVal("MASS",0,1,10010),mZR12Def),mZR12Def)                    %Mass of ZR12.                                     
+%mZR13         |if(slhaFound,if(slhaValExists("MASS",1,10011),slhaVal("MASS",0,1,10011),mZR13Def),mZR13Def)                    %Mass of ZR13.                                     
+%mZR21         |if(slhaFound,if(slhaValExists("MASS",1,10012),slhaVal("MASS",0,1,10012),mZR21Def),mZR21Def)                    %Mass of ZR21.                                     
+%mZR22         |if(slhaFound,if(slhaValExists("MASS",1,10013),slhaVal("MASS",0,1,10013),mZR22Def),mZR22Def)                    %Mass of ZR22.                                     
+%mZR23         |if(slhaFound,if(slhaValExists("MASS",1,10014),slhaVal("MASS",0,1,10014),mZR23Def),mZR23Def)                    %Mass of ZR23.                                     
+%mZR31         |if(slhaFound,if(slhaValExists("MASS",1,10015),slhaVal("MASS",0,1,10015),mZR31Def),mZR31Def)                    %Mass of ZR31.                                     
+%mZR32         |if(slhaFound,if(slhaValExists("MASS",1,10016),slhaVal("MASS",0,1,10016),mZR32Def),mZR32Def)                    %Mass of ZR32.                                     
+%mZR33         |if(slhaFound,if(slhaValExists("MASS",1,10017),slhaVal("MASS",0,1,10017),mZR33Def),mZR33Def)                    %Mass of ZR33.                                     
+%WZ            |if(slhaFound,if(1+slhaDecayExists(23),slhaWidth(23),WZDef),WZDef)                                              %Width of G0.                                      
+%WW            |if(slhaFound,if(1+slhaDecayExists(24),slhaWidth(24),WWDef),WWDef)                                              %Width of GP.                                      
+%WT            |if(slhaFound,if(1+slhaDecayExists(6),slhaWidth(6),WTDef),WTDef)                                                %Width of t.                                       
+%WH            |if(slhaFound,if(1+slhaDecayExists(25),slhaWidth(25),WHDef),WHDef)                                              %Width of H.                                       
+aEW            |pow(aEWM1,-1)                                                                                                  % Electroweak coupling contant                      
+MW             |pow(pow(MZ,2)/2.+pow(-(aEW*Pi*pow(2,-0.5)*pow(Gf,-1)*pow(MZ,2))+pow(MZ,4)/4.,0.5),0.5)                         % W mass                                            
+sw2            |1-pow(MW,2)*pow(MZ,-2)                                                                                         % Squared Sin of the Weinberg angle                 
+EE             |2*pow(aEW,0.5)*pow(Pi,0.5)                                                                                     % Electric coupling constant                        
+cw             |pow(1-sw2,0.5)                                                                                                 % Cosine of the Weinberg angle                      
+sw             |pow(sw2,0.5)                                                                                                   % Sine of the Weinberg angle                        
+gw             |EE*pow(sw,-1)                                                                                                  % Weak coupling constant at the Z pole              
+g1             |EE*pow(cw,-1)                                                                                                  % U(1)Y coupling constant at the Z pole             
+vev            |2*MW*sw*pow(EE,-1)                                                                                             % Higgs vacuum expectation value                    
+lam            |(pow(MH,2)*pow(vev,-2))/2.                                                                                     % Higgs quartic coupling                            
+muH            |pow(lam*pow(vev,2),0.5)                                                                                        % Coefficient of the quadratic piece of the Higgs po
+ye             |yme*pow(2,0.5)*pow(vev,-1)                                                                                     % Lepton Yukawa couplings ( ye )                    
+ym             |ymm*pow(2,0.5)*pow(vev,-1)                                                                                     % Lepton Yukawa couplings ( ym )                    
+ytau           |ymtau*pow(2,0.5)*pow(vev,-1)                                                                                   % Lepton Yukawa couplings ( ytau )                  
+yup            |ymup*pow(2,0.5)*pow(vev,-1)                                                                                    % Up-type Yukawa couplings ( yup )                  
+yc             |ymc*pow(2,0.5)*pow(vev,-1)                                                                                     % Up-type Yukawa couplings ( yc )                   
+yt             |ymt*pow(2,0.5)*pow(vev,-1)                                                                                     % Up-type Yukawa couplings ( yt )                   
+ydo            |ymdo*pow(2,0.5)*pow(vev,-1)                                                                                    % Down-type Yukawa couplings ( ydo )                
+ys             |yms*pow(2,0.5)*pow(vev,-1)                                                                                     % Down-type Yukawa couplings ( ys )                 
+yb             |ymb*pow(2,0.5)*pow(vev,-1)                                                                                     % Down-type Yukawa couplings ( yb )                 
+CKM1x1         |cos(cabi)                                                                                                      % CKM-Matrix ( CKM1x1 )                             
+CKM1x2         |sin(cabi)                                                                                                      % CKM-Matrix ( CKM1x2 )                             
+CKM1x3         |0                                                                                                              % CKM-Matrix ( CKM1x3 )                             
+CKM2x1         |-sin(cabi)                                                                                                     % CKM-Matrix ( CKM2x1 )                             
+CKM2x2         |cos(cabi)                                                                                                      % CKM-Matrix ( CKM2x2 )                             
+CKM2x3         |0                                                                                                              % CKM-Matrix ( CKM2x3 )                             
+CKM3x1         |0                                                                                                              % CKM-Matrix ( CKM3x1 )                             
+CKM3x2         |0                                                                                                              % CKM-Matrix ( CKM3x2 )                             
+CKM3x3         |1                                                                                                              % CKM-Matrix ( CKM3x3 )                             
+I1a11          |CKM1x1*ydo                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I1a12          |CKM2x1*ydo                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I1a13          |CKM3x1*ydo                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I1a21          |CKM1x2*ys                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I1a22          |CKM2x2*ys                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I1a23          |CKM3x2*ys                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I1a31          |CKM1x3*yb                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I1a32          |CKM2x3*yb                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I1a33          |CKM3x3*yb                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I2a11          |CKM1x1*yup                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I2a12          |CKM2x1*yc                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I2a13          |CKM3x1*yt                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I2a21          |CKM1x2*yup                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I2a22          |CKM2x2*yc                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I2a23          |CKM3x2*yt                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I2a31          |CKM1x3*yup                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I2a32          |CKM2x3*yc                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I2a33          |CKM3x3*yt                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I3a11          |CKM1x1*yup                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I3a12          |CKM1x2*yup                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I3a13          |CKM1x3*yup                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I3a21          |CKM2x1*yc                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I3a22          |CKM2x2*yc                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I3a23          |CKM2x3*yc                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I3a31          |CKM3x1*yt                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I3a32          |CKM3x2*yt                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I3a33          |CKM3x3*yt                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I4a11          |CKM1x1*ydo                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I4a12          |CKM1x2*ys                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I4a13          |CKM1x3*yb                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I4a21          |CKM2x1*ydo                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I4a22          |CKM2x2*ys                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I4a23          |CKM2x3*yb                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I4a31          |CKM3x1*ydo                                                                                                     % Abbreviation used in optimizatized FeynRules outpu
+I4a32          |CKM3x2*ys                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+I4a33          |CKM3x3*yb                                                                                                      % Abbreviation used in optimizatized FeynRules outpu
+x1x0           |-6*lam                                                                                                         % Z.f  Z.f  Z.f  Z.f   coupling.
+x2x0           |-2*lam                                                                                                         % Z.f  Z.f  W+.f W-.f  coupling.
+x3x0           |-4*lam                                                                                                         % W+.f W+.f W-.f W-.f  coupling.
+x4x0           |-2*lam                                                                                                         % Z.f  Z.f  H    H     coupling.
+x5x0           |-2*lam                                                                                                         % W+.f W-.f H    H     coupling.
+x6x0           |-6*lam                                                                                                         % H    H    H    H     coupling.
+x7x0           |-2*lam*vev                                                                                                     % Z.f  Z.f  H     coupling.
+x8x0           |-2*lam*vev                                                                                                     % W+.f W-.f H     coupling.
+x9x0           |-6*lam*vev                                                                                                     % H    H    H     coupling.
+x10x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X11  X11   coupling.
+x11x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X11  X11   coupling.
+x12x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X12  X12   coupling.
+x13x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X12  X12   coupling.
+x14x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X13  X13   coupling.
+x15x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X13  X13   coupling.
+x16x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X21  X21   coupling.
+x17x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X21  X21   coupling.
+x18x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X22  X22   coupling.
+x19x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X22  X22   coupling.
+x20x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X23  X23   coupling.
+x21x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X23  X23   coupling.
+x22x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X31  X31   coupling.
+x23x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X31  X31   coupling.
+x24x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X32  X32   coupling.
+x25x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X32  X32   coupling.
+x26x0          |-lP-6*K6*pow(vev,2)                                                                                            % H    H    X33  X33   coupling.
+x27x0          |-(vev*(lP+2*K6*pow(vev,2)))                                                                                    % H    X33  X33   coupling.
+x28x0          |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL11~ZL11 coupling.
+x29x0          |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL11~ZL11 coupling.
+x30x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL11~ZL11 coupling.
+x31x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL11~ZL11 coupling.
+x32x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL11~ZL11 coupling.
+x33x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL11~ZL11 coupling.
+x34x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL11~ZL11 coupling.
+x35x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL11~ZL11 coupling.
+x36x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL11~ZL11 coupling.
+x37x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL11~ZL11 coupling.
+x38x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL11~ZL11 coupling.
+x39x0          |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL11~ZL11~ZL11~ZL11 coupling.
+x40x0          |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL12~ZL12 coupling.
+x41x0          |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL12~ZL12 coupling.
+x42x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL12~ZL12 coupling.
+x43x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL12~ZL12 coupling.
+x44x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL12~ZL12 coupling.
+x45x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL12~ZL12 coupling.
+x46x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL12~ZL12 coupling.
+x47x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL12~ZL12 coupling.
+x48x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL12~ZL12 coupling.
+x49x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL12~ZL12 coupling.
+x50x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL12~ZL12 coupling.
+x51x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL12~ZL12 coupling.
+x52x0          |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL12~ZL12~ZL12~ZL12 coupling.
+x53x0          |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL13~ZL13 coupling.
+x54x0          |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL13~ZL13 coupling.
+x55x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL13~ZL13 coupling.
+x56x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL13~ZL13 coupling.
+x57x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL13~ZL13 coupling.
+x58x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL13~ZL13 coupling.
+x59x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL13~ZL13 coupling.
+x60x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL13~ZL13 coupling.
+x61x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL13~ZL13 coupling.
+x62x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL13~ZL13 coupling.
+x63x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL13~ZL13 coupling.
+x64x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL13~ZL13 coupling.
+x65x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL13~ZL13 coupling.
+x66x0          |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL13~ZL13~ZL13~ZL13 coupling.
+x67x0          |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL21~ZL21 coupling.
+x68x0          |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL21~ZL21 coupling.
+x69x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL21~ZL21 coupling.
+x70x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL21~ZL21 coupling.
+x71x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL21~ZL21 coupling.
+x72x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL21~ZL21 coupling.
+x73x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL21~ZL21 coupling.
+x74x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL21~ZL21 coupling.
+x75x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL21~ZL21 coupling.
+x76x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL21~ZL21 coupling.
+x77x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL21~ZL21 coupling.
+x78x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL21~ZL21 coupling.
+x79x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL21~ZL21 coupling.
+x80x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZL21~ZL21 coupling.
+x81x0          |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL21~ZL21~ZL21~ZL21 coupling.
+x82x0          |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL22~ZL22 coupling.
+x83x0          |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL22~ZL22 coupling.
+x84x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL22~ZL22 coupling.
+x85x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL22~ZL22 coupling.
+x86x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL22~ZL22 coupling.
+x87x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL22~ZL22 coupling.
+x88x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL22~ZL22 coupling.
+x89x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL22~ZL22 coupling.
+x90x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL22~ZL22 coupling.
+x91x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL22~ZL22 coupling.
+x92x0          |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL22~ZL22 coupling.
+x93x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL22~ZL22 coupling.
+x94x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL22~ZL22 coupling.
+x95x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZL22~ZL22 coupling.
+x96x0          |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZL22~ZL22 coupling.
+x97x0          |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL22~ZL22~ZL22~ZL22 coupling.
+x98x0          |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL23~ZL23 coupling.
+x99x0          |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL23~ZL23 coupling.
+x100x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL23~ZL23 coupling.
+x101x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL23~ZL23 coupling.
+x102x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL23~ZL23 coupling.
+x103x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL23~ZL23 coupling.
+x104x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL23~ZL23 coupling.
+x105x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL23~ZL23 coupling.
+x106x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL23~ZL23 coupling.
+x107x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL23~ZL23 coupling.
+x108x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL23~ZL23 coupling.
+x109x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL23~ZL23 coupling.
+x110x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL23~ZL23 coupling.
+x111x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZL23~ZL23 coupling.
+x112x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZL23~ZL23 coupling.
+x113x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZL23~ZL23 coupling.
+x114x0         |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL23~ZL23~ZL23~ZL23 coupling.
+x115x0         |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL31~ZL31 coupling.
+x116x0         |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL31~ZL31 coupling.
+x117x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL31~ZL31 coupling.
+x118x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL31~ZL31 coupling.
+x119x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL31~ZL31 coupling.
+x120x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL31~ZL31 coupling.
+x121x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL31~ZL31 coupling.
+x122x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL31~ZL31 coupling.
+x123x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL31~ZL31 coupling.
+x124x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL31~ZL31 coupling.
+x125x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL31~ZL31 coupling.
+x126x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL31~ZL31 coupling.
+x127x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL31~ZL31 coupling.
+x128x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZL31~ZL31 coupling.
+x129x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZL31~ZL31 coupling.
+x130x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZL31~ZL31 coupling.
+x131x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZL31~ZL31 coupling.
+x132x0         |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL31~ZL31~ZL31~ZL31 coupling.
+x133x0         |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL32~ZL32 coupling.
+x134x0         |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL32~ZL32 coupling.
+x135x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL32~ZL32 coupling.
+x136x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL32~ZL32 coupling.
+x137x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL32~ZL32 coupling.
+x138x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL32~ZL32 coupling.
+x139x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL32~ZL32 coupling.
+x140x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL32~ZL32 coupling.
+x141x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL32~ZL32 coupling.
+x142x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL32~ZL32 coupling.
+x143x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL32~ZL32 coupling.
+x144x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL32~ZL32 coupling.
+x145x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL32~ZL32 coupling.
+x146x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZL32~ZL32 coupling.
+x147x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZL32~ZL32 coupling.
+x148x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZL32~ZL32 coupling.
+x149x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZL32~ZL32 coupling.
+x150x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZL32~ZL32 coupling.
+x151x0         |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL32~ZL32~ZL32~ZL32 coupling.
+x152x0         |-lR1-6*K4*pow(vev,2)                                                                                           % H    H    ~ZL33~ZL33 coupling.
+x153x0         |-(vev*(lR1+2*K4*pow(vev,2)))                                                                                   % H    ~ZL33~ZL33 coupling.
+x154x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X11  X11  ~ZL33~ZL33 coupling.
+x155x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X12  X12  ~ZL33~ZL33 coupling.
+x156x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X13  X13  ~ZL33~ZL33 coupling.
+x157x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X21  X21  ~ZL33~ZL33 coupling.
+x158x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X22  X22  ~ZL33~ZL33 coupling.
+x159x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X23  X23  ~ZL33~ZL33 coupling.
+x160x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X31  X31  ~ZL33~ZL33 coupling.
+x161x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X32  X32  ~ZL33~ZL33 coupling.
+x162x0         |-2*(2*gLP+K7*pow(vev,2))                                                                                       % X33  X33  ~ZL33~ZL33 coupling.
+x163x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZL33~ZL33 coupling.
+x164x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZL33~ZL33 coupling.
+x165x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZL33~ZL33 coupling.
+x166x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZL33~ZL33 coupling.
+x167x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZL33~ZL33 coupling.
+x168x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZL33~ZL33 coupling.
+x169x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZL33~ZL33 coupling.
+x170x0         |-4*(2*gLL+K3*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZL33~ZL33 coupling.
+x171x0         |-12*(2*gLL+K3*pow(vev,2))                                                                                      % ~ZL33~ZL33~ZL33~ZL33 coupling.
+x172x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR11~ZR11 coupling.
+x173x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR11~ZR11 coupling.
+x174x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR11~ZR11 coupling.
+x175x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR11~ZR11 coupling.
+x176x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR11~ZR11 coupling.
+x177x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR11~ZR11 coupling.
+x178x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR11~ZR11 coupling.
+x179x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR11~ZR11 coupling.
+x180x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR11~ZR11 coupling.
+x181x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR11~ZR11 coupling.
+x182x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR11~ZR11 coupling.
+x183x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR11~ZR11 coupling.
+x184x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR11~ZR11 coupling.
+x185x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR11~ZR11 coupling.
+x186x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR11~ZR11 coupling.
+x187x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR11~ZR11 coupling.
+x188x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR11~ZR11 coupling.
+x189x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR11~ZR11 coupling.
+x190x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR11~ZR11 coupling.
+x191x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR11~ZR11 coupling.
+x192x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR11~ZR11~ZR11~ZR11 coupling.
+x193x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR12~ZR12 coupling.
+x194x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR12~ZR12 coupling.
+x195x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR12~ZR12 coupling.
+x196x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR12~ZR12 coupling.
+x197x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR12~ZR12 coupling.
+x198x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR12~ZR12 coupling.
+x199x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR12~ZR12 coupling.
+x200x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR12~ZR12 coupling.
+x201x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR12~ZR12 coupling.
+x202x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR12~ZR12 coupling.
+x203x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR12~ZR12 coupling.
+x204x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR12~ZR12 coupling.
+x205x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR12~ZR12 coupling.
+x206x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR12~ZR12 coupling.
+x207x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR12~ZR12 coupling.
+x208x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR12~ZR12 coupling.
+x209x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR12~ZR12 coupling.
+x210x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR12~ZR12 coupling.
+x211x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR12~ZR12 coupling.
+x212x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR12~ZR12 coupling.
+x213x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR12~ZR12 coupling.
+x214x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR12~ZR12~ZR12~ZR12 coupling.
+x215x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR13~ZR13 coupling.
+x216x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR13~ZR13 coupling.
+x217x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR13~ZR13 coupling.
+x218x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR13~ZR13 coupling.
+x219x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR13~ZR13 coupling.
+x220x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR13~ZR13 coupling.
+x221x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR13~ZR13 coupling.
+x222x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR13~ZR13 coupling.
+x223x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR13~ZR13 coupling.
+x224x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR13~ZR13 coupling.
+x225x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR13~ZR13 coupling.
+x226x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR13~ZR13 coupling.
+x227x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR13~ZR13 coupling.
+x228x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR13~ZR13 coupling.
+x229x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR13~ZR13 coupling.
+x230x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR13~ZR13 coupling.
+x231x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR13~ZR13 coupling.
+x232x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR13~ZR13 coupling.
+x233x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR13~ZR13 coupling.
+x234x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR13~ZR13 coupling.
+x235x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR13~ZR13 coupling.
+x236x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR13~ZR13 coupling.
+x237x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR13~ZR13~ZR13~ZR13 coupling.
+x238x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR21~ZR21 coupling.
+x239x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR21~ZR21 coupling.
+x240x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR21~ZR21 coupling.
+x241x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR21~ZR21 coupling.
+x242x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR21~ZR21 coupling.
+x243x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR21~ZR21 coupling.
+x244x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR21~ZR21 coupling.
+x245x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR21~ZR21 coupling.
+x246x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR21~ZR21 coupling.
+x247x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR21~ZR21 coupling.
+x248x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR21~ZR21 coupling.
+x249x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR21~ZR21 coupling.
+x250x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR21~ZR21 coupling.
+x251x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR21~ZR21 coupling.
+x252x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR21~ZR21 coupling.
+x253x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR21~ZR21 coupling.
+x254x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR21~ZR21 coupling.
+x255x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR21~ZR21 coupling.
+x256x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR21~ZR21 coupling.
+x257x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR21~ZR21 coupling.
+x258x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR21~ZR21 coupling.
+x259x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR21~ZR21 coupling.
+x260x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR13~ZR13~ZR21~ZR21 coupling.
+x261x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR21~ZR21~ZR21~ZR21 coupling.
+x262x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR22~ZR22 coupling.
+x263x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR22~ZR22 coupling.
+x264x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR22~ZR22 coupling.
+x265x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR22~ZR22 coupling.
+x266x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR22~ZR22 coupling.
+x267x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR22~ZR22 coupling.
+x268x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR22~ZR22 coupling.
+x269x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR22~ZR22 coupling.
+x270x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR22~ZR22 coupling.
+x271x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR22~ZR22 coupling.
+x272x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR22~ZR22 coupling.
+x273x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR22~ZR22 coupling.
+x274x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR22~ZR22 coupling.
+x275x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR22~ZR22 coupling.
+x276x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR22~ZR22 coupling.
+x277x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR22~ZR22 coupling.
+x278x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR22~ZR22 coupling.
+x279x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR22~ZR22 coupling.
+x280x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR22~ZR22 coupling.
+x281x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR22~ZR22 coupling.
+x282x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR22~ZR22 coupling.
+x283x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR22~ZR22 coupling.
+x284x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR13~ZR13~ZR22~ZR22 coupling.
+x285x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR21~ZR21~ZR22~ZR22 coupling.
+x286x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR22~ZR22~ZR22~ZR22 coupling.
+x287x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR23~ZR23 coupling.
+x288x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR23~ZR23 coupling.
+x289x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR23~ZR23 coupling.
+x290x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR23~ZR23 coupling.
+x291x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR23~ZR23 coupling.
+x292x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR23~ZR23 coupling.
+x293x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR23~ZR23 coupling.
+x294x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR23~ZR23 coupling.
+x295x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR23~ZR23 coupling.
+x296x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR23~ZR23 coupling.
+x297x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR23~ZR23 coupling.
+x298x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR23~ZR23 coupling.
+x299x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR23~ZR23 coupling.
+x300x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR23~ZR23 coupling.
+x301x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR23~ZR23 coupling.
+x302x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR23~ZR23 coupling.
+x303x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR23~ZR23 coupling.
+x304x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR23~ZR23 coupling.
+x305x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR23~ZR23 coupling.
+x306x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR23~ZR23 coupling.
+x307x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR23~ZR23 coupling.
+x308x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR23~ZR23 coupling.
+x309x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR13~ZR13~ZR23~ZR23 coupling.
+x310x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR21~ZR21~ZR23~ZR23 coupling.
+x311x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR22~ZR22~ZR23~ZR23 coupling.
+x312x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR23~ZR23~ZR23~ZR23 coupling.
+x313x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR31~ZR31 coupling.
+x314x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR31~ZR31 coupling.
+x315x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR31~ZR31 coupling.
+x316x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR31~ZR31 coupling.
+x317x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR31~ZR31 coupling.
+x318x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR31~ZR31 coupling.
+x319x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR31~ZR31 coupling.
+x320x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR31~ZR31 coupling.
+x321x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR31~ZR31 coupling.
+x322x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR31~ZR31 coupling.
+x323x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR31~ZR31 coupling.
+x324x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR31~ZR31 coupling.
+x325x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR31~ZR31 coupling.
+x326x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR31~ZR31 coupling.
+x327x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR31~ZR31 coupling.
+x328x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR31~ZR31 coupling.
+x329x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR31~ZR31 coupling.
+x330x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR31~ZR31 coupling.
+x331x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR31~ZR31 coupling.
+x332x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR31~ZR31 coupling.
+x333x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR31~ZR31 coupling.
+x334x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR31~ZR31 coupling.
+x335x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR13~ZR13~ZR31~ZR31 coupling.
+x336x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR21~ZR21~ZR31~ZR31 coupling.
+x337x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR22~ZR22~ZR31~ZR31 coupling.
+x338x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR23~ZR23~ZR31~ZR31 coupling.
+x339x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR31~ZR31~ZR31~ZR31 coupling.
+x340x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR32~ZR32 coupling.
+x341x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR32~ZR32 coupling.
+x342x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR32~ZR32 coupling.
+x343x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR32~ZR32 coupling.
+x344x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR32~ZR32 coupling.
+x345x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR32~ZR32 coupling.
+x346x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR32~ZR32 coupling.
+x347x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR32~ZR32 coupling.
+x348x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR32~ZR32 coupling.
+x349x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR32~ZR32 coupling.
+x350x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR32~ZR32 coupling.
+x351x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR32~ZR32 coupling.
+x352x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR32~ZR32 coupling.
+x353x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR32~ZR32 coupling.
+x354x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR32~ZR32 coupling.
+x355x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR32~ZR32 coupling.
+x356x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR32~ZR32 coupling.
+x357x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR32~ZR32 coupling.
+x358x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR32~ZR32 coupling.
+x359x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR32~ZR32 coupling.
+x360x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR32~ZR32 coupling.
+x361x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR32~ZR32 coupling.
+x362x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR13~ZR13~ZR32~ZR32 coupling.
+x363x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR21~ZR21~ZR32~ZR32 coupling.
+x364x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR22~ZR22~ZR32~ZR32 coupling.
+x365x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR23~ZR23~ZR32~ZR32 coupling.
+x366x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR31~ZR31~ZR32~ZR32 coupling.
+x367x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR32~ZR32~ZR32~ZR32 coupling.
+x368x0         |-lL1-6*K5*pow(vev,2)                                                                                           % H    H    ~ZR33~ZR33 coupling.
+x369x0         |-(vev*(lL1+2*K5*pow(vev,2)))                                                                                   % H    ~ZR33~ZR33 coupling.
+x370x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X11  X11  ~ZR33~ZR33 coupling.
+x371x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X12  X12  ~ZR33~ZR33 coupling.
+x372x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X13  X13  ~ZR33~ZR33 coupling.
+x373x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X21  X21  ~ZR33~ZR33 coupling.
+x374x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X22  X22  ~ZR33~ZR33 coupling.
+x375x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X23  X23  ~ZR33~ZR33 coupling.
+x376x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X31  X31  ~ZR33~ZR33 coupling.
+x377x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X32  X32  ~ZR33~ZR33 coupling.
+x378x0         |-2*(2*gRP+K8*pow(vev,2))                                                                                       % X33  X33  ~ZR33~ZR33 coupling.
+x379x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL11~ZL11~ZR33~ZR33 coupling.
+x380x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL12~ZL12~ZR33~ZR33 coupling.
+x381x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL13~ZL13~ZR33~ZR33 coupling.
+x382x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL21~ZL21~ZR33~ZR33 coupling.
+x383x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL22~ZL22~ZR33~ZR33 coupling.
+x384x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL23~ZL23~ZR33~ZR33 coupling.
+x385x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL31~ZL31~ZR33~ZR33 coupling.
+x386x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL32~ZL32~ZR33~ZR33 coupling.
+x387x0         |-2*(2*gLR+K1*pow(vev,2))                                                                                       % ~ZL33~ZL33~ZR33~ZR33 coupling.
+x388x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR11~ZR11~ZR33~ZR33 coupling.
+x389x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR12~ZR12~ZR33~ZR33 coupling.
+x390x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR13~ZR13~ZR33~ZR33 coupling.
+x391x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR21~ZR21~ZR33~ZR33 coupling.
+x392x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR22~ZR22~ZR33~ZR33 coupling.
+x393x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR23~ZR23~ZR33~ZR33 coupling.
+x394x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR31~ZR31~ZR33~ZR33 coupling.
+x395x0         |-4*(2*gRR+K2*pow(vev,2))                                                                                       % ~ZR32~ZR32~ZR33~ZR33 coupling.
+x396x0         |-12*(2*gRR+K2*pow(vev,2))                                                                                      % ~ZR33~ZR33~ZR33~ZR33 coupling.
+x397x0         |2                                                                                                              % a    a    W+.f W-.f  coupling.
+x398x0         |-1                                                                                                             % a    W+.f W-.f  coupling.
+x399x0         |1                                                                                                              % a.C  W-.c W+    coupling.
+x400x0         |-1                                                                                                             % a.C  W+.c W-    coupling.
+x401x0         |-0.5*(vev*pow(sw,-1))                                                                                          % W+.C a.c  W-.f  coupling.
+x402x0         |1                                                                                                              % W+.C a.c  W-    coupling.
+x403x0         |(vev*pow(sw,-2))/4.                                                                                            % W+.C W-.c Z.f   coupling.
+x404x0         |-0.25*(vev*pow(sw,-2))                                                                                         % W+.C W-.c H     coupling.
+x405x0         |-1                                                                                                             % W+.C W-.c a     coupling.
+x406x0         |-(cw*pow(sw,-1))                                                                                               % W+.C W-.c Z     coupling.
+x407x0         |(vev*pow(cw,-1))/4.-(cw*vev*pow(sw,-2))/4.                                                                     % W+.C Z.c  W-.f  coupling.
+x408x0         |cw*pow(sw,-1)                                                                                                  % W+.C Z.c  W-    coupling.
+x409x0         |(vev*pow(sw,-1))/2.                                                                                            % W-.C a.c  W+.f  coupling.
+x410x0         |-1                                                                                                             % W-.C a.c  W+    coupling.
+x411x0         |-0.25*(vev*pow(sw,-2))                                                                                         % W-.C W+.c Z.f   coupling.
+x412x0         |-0.25*(vev*pow(sw,-2))                                                                                         % W-.C W+.c H     coupling.
+x413x0         |1                                                                                                              % W-.C W+.c a     coupling.
+x414x0         |cw*pow(sw,-1)                                                                                                  % W-.C W+.c Z     coupling.
+x415x0         |(vev*pow(cw,-1)*(-1+pow(cw,2)*pow(sw,-2)))/4.                                                                  % W-.C Z.c  W+.f  coupling.
+x416x0         |-(cw*pow(sw,-1))                                                                                               % W-.C Z.c  W+    coupling.
+x417x0         |-0.25*(vev*pow(cw,-1)*pow(sw,-2)*(pow(cw,2)+pow(sw,2)))                                                        % Z.C  W-.c W+.f  coupling.
+x418x0         |cw*pow(sw,-1)                                                                                                  % Z.C  W-.c W+    coupling.
+x419x0         |(vev*pow(cw,-1)*(1+pow(cw,2)*pow(sw,-2)))/4.                                                                   % Z.C  W+.c W-.f  coupling.
+x420x0         |-(cw*pow(sw,-1))                                                                                               % Z.C  W+.c W-    coupling.
+x421x0         |-0.25*(vev*pow(cw,-2)*pow(sw,-2)*pow(pow(cw,2)+pow(sw,2),2))                                                   % Z.C  Z.c  H     coupling.
+x422x0         |1                                                                                                              % g.C  g.c  g     coupling.
+x423x0         |1                                                                                                              % g    g    g     coupling.
+x424x          |-pow(2,-0.5)                                                                                                   % g    g    g        coupling.
+x425x0         |0.5                                                                                                            % W-.f d~   u     coupling.
+x425x1         |-I1a11+I2a11                                                                                                   % W-.f d~   u        coupling.
+x425x2         |I1a11+I2a11                                                                                                    % W-.f d~   u        coupling.
+x426x0         |0.5                                                                                                            % W-.f d~   c     coupling.
+x426x1         |-I1a12+I2a12                                                                                                   % W-.f d~   c        coupling.
+x426x2         |I1a12+I2a12                                                                                                    % W-.f d~   c        coupling.
+x427x0         |0.5                                                                                                            % W-.f d~   t     coupling.
+x427x1         |-I1a13+I2a13                                                                                                   % W-.f d~   t        coupling.
+x427x2         |I1a13+I2a13                                                                                                    % W-.f d~   t        coupling.
+x428x0         |0.5                                                                                                            % W-.f s~   u     coupling.
+x428x1         |-I1a21+I2a21                                                                                                   % W-.f s~   u        coupling.
+x428x2         |I1a21+I2a21                                                                                                    % W-.f s~   u        coupling.
+x429x0         |0.5                                                                                                            % W-.f s~   c     coupling.
+x429x1         |-I1a22+I2a22                                                                                                   % W-.f s~   c        coupling.
+x429x2         |I1a22+I2a22                                                                                                    % W-.f s~   c        coupling.
+x430x0         |0.5                                                                                                            % W-.f s~   t     coupling.
+x430x1         |-I1a23+I2a23                                                                                                   % W-.f s~   t        coupling.
+x430x2         |I1a23+I2a23                                                                                                    % W-.f s~   t        coupling.
+x431x0         |0.5                                                                                                            % W-.f b~   u     coupling.
+x431x1         |-I1a31+I2a31                                                                                                   % W-.f b~   u        coupling.
+x431x2         |I1a31+I2a31                                                                                                    % W-.f b~   u        coupling.
+x432x0         |0.5                                                                                                            % W-.f b~   c     coupling.
+x432x1         |-I1a32+I2a32                                                                                                   % W-.f b~   c        coupling.
+x432x2         |I1a32+I2a32                                                                                                    % W-.f b~   c        coupling.
+x433x0         |0.5                                                                                                            % W-.f b~   t     coupling.
+x433x1         |-I1a33+I2a33                                                                                                   % W-.f b~   t        coupling.
+x433x2         |I1a33+I2a33                                                                                                    % W-.f b~   t        coupling.
+x434x0         |-(ydo*pow(2,-0.5))                                                                                             % Z.f  d~   d     coupling.
+x435x0         |-(ys*pow(2,-0.5))                                                                                              % Z.f  s~   s     coupling.
+x436x0         |-(yb*pow(2,-0.5))                                                                                              % Z.f  b~   b     coupling.
+x437x0         |-(ydo*pow(2,-0.5))                                                                                             % H    d~   d     coupling.
+x438x0         |-(ys*pow(2,-0.5))                                                                                              % H    s~   s     coupling.
+x439x0         |-(yb*pow(2,-0.5))                                                                                              % H    b~   b     coupling.
+x440x0         |ye/2.                                                                                                          % W-.f e+   ve    coupling.
+x441x0         |ym/2.                                                                                                          % W-.f mu+  vm    coupling.
+x442x0         |ytau/2.                                                                                                        % W-.f ta+  vt    coupling.
+x443x0         |-(ye*pow(2,-0.5))                                                                                              % Z.f  e+   e-    coupling.
+x444x0         |-(ym*pow(2,-0.5))                                                                                              % Z.f  mu+  mu-   coupling.
+x445x0         |-(ytau*pow(2,-0.5))                                                                                            % Z.f  ta+  ta-   coupling.
+x446x0         |-(ye*pow(2,-0.5))                                                                                              % H    e+   e-    coupling.
+x447x0         |-(ym*pow(2,-0.5))                                                                                              % H    mu+  mu-   coupling.
+x448x0         |-(ytau*pow(2,-0.5))                                                                                            % H    ta+  ta-   coupling.
+x449x0         |0.5                                                                                                            % W+.f u~   d     coupling.
+x449x1         |-I3a11+I4a11                                                                                                   % W+.f u~   d        coupling.
+x449x2         |I3a11+I4a11                                                                                                    % W+.f u~   d        coupling.
+x450x0         |0.5                                                                                                            % W+.f u~   s     coupling.
+x450x1         |-I3a12+I4a12                                                                                                   % W+.f u~   s        coupling.
+x450x2         |I3a12+I4a12                                                                                                    % W+.f u~   s        coupling.
+x451x0         |0.5                                                                                                            % W+.f u~   b     coupling.
+x451x1         |-I3a13+I4a13                                                                                                   % W+.f u~   b        coupling.
+x451x2         |I3a13+I4a13                                                                                                    % W+.f u~   b        coupling.
+x452x0         |0.5                                                                                                            % W+.f c~   d     coupling.
+x452x1         |-I3a21+I4a21                                                                                                   % W+.f c~   d        coupling.
+x452x2         |I3a21+I4a21                                                                                                    % W+.f c~   d        coupling.
+x453x0         |0.5                                                                                                            % W+.f c~   s     coupling.
+x453x1         |-I3a22+I4a22                                                                                                   % W+.f c~   s        coupling.
+x453x2         |I3a22+I4a22                                                                                                    % W+.f c~   s        coupling.
+x454x0         |0.5                                                                                                            % W+.f c~   b     coupling.
+x454x1         |-I3a23+I4a23                                                                                                   % W+.f c~   b        coupling.
+x454x2         |I3a23+I4a23                                                                                                    % W+.f c~   b        coupling.
+x455x0         |0.5                                                                                                            % W+.f t~   d     coupling.
+x455x1         |-I3a31+I4a31                                                                                                   % W+.f t~   d        coupling.
+x455x2         |I3a31+I4a31                                                                                                    % W+.f t~   d        coupling.
+x456x0         |0.5                                                                                                            % W+.f t~   s     coupling.
+x456x1         |-I3a32+I4a32                                                                                                   % W+.f t~   s        coupling.
+x456x2         |I3a32+I4a32                                                                                                    % W+.f t~   s        coupling.
+x457x0         |0.5                                                                                                            % W+.f t~   b     coupling.
+x457x1         |-I3a33+I4a33                                                                                                   % W+.f t~   b        coupling.
+x457x2         |I3a33+I4a33                                                                                                    % W+.f t~   b        coupling.
+x458x0         |yup*pow(2,-0.5)                                                                                                % Z.f  u~   u     coupling.
+x459x0         |yc*pow(2,-0.5)                                                                                                 % Z.f  c~   c     coupling.
+x460x0         |yt*pow(2,-0.5)                                                                                                 % Z.f  t~   t     coupling.
+x461x0         |-(yup*pow(2,-0.5))                                                                                             % H    u~   u     coupling.
+x462x0         |-(yc*pow(2,-0.5))                                                                                              % H    c~   c     coupling.
+x463x0         |-(yt*pow(2,-0.5))                                                                                              % H    t~   t     coupling.
+x464x0         |-0.5*pow(sw,-1)                                                                                                % a    Z.f  W-.f W+    coupling.
+x465x0         |pow(sw,-1)/2.                                                                                                  % a    W-.f H    W+    coupling.
+x466x0         |(vev*pow(sw,-1))/2.                                                                                            % a    W-.f W+    coupling.
+x467x0         |pow(sw,-1)/2.                                                                                                  % Z.f  W-.f W+    coupling.
+x468x0         |pow(sw,-1)/2.                                                                                                  % W-.f H    W+    coupling.
+x469x0         |-1                                                                                                             % a    W+   W-    coupling.
+x470x0         |-0.5*pow(sw,-1)                                                                                                % a    Z.f  W+.f W-    coupling.
+x471x0         |-0.5*pow(sw,-1)                                                                                                % a    W+.f H    W-    coupling.
+x472x0         |-0.5*(vev*pow(sw,-1))                                                                                          % a    W+.f W-    coupling.
+x473x0         |-0.5*pow(sw,-1)                                                                                                % Z.f  W+.f W-    coupling.
+x474x0         |pow(sw,-1)/2.                                                                                                  % W+.f H    W-    coupling.
+x475x0         |pow(sw,-2)/2.                                                                                                  % Z.f  Z.f  W+   W-    coupling.
+x476x0         |pow(sw,-2)/2.                                                                                                  % W+.f W-.f W+   W-    coupling.
+x477x0         |pow(sw,-2)/2.                                                                                                  % H    H    W+   W-    coupling.
+x478x0         |(vev*pow(sw,-2))/2.                                                                                            % H    W+   W-    coupling.
+x479x0         |-1                                                                                                             % a    a    W+   W-    coupling.
+x480x0         |-(cw*pow(sw,-1))                                                                                               % W+   W-   Z     coupling.
+x481x0         |pow(sw,-2)                                                                                                     % W+   W+   W-   W-    coupling.
+x482x0         |ye/2.                                                                                                          % W+.f ve~  e-    coupling.
+x483x0         |ym/2.                                                                                                          % W+.f vm~  mu-   coupling.
+x484x0         |ytau/2.                                                                                                        % W+.f vt~  ta-   coupling.
+x485x0         |-(sw*pow(cw,-1))+cw*pow(sw,-1)                                                                                 % a    W+.f W-.f Z     coupling.
+x486x0         |(pow(cw,-1)*pow(sw,-1)*(pow(cw,2)+pow(sw,2)))/2.                                                               % Z.f  H    Z     coupling.
+x487x0         |(sw*pow(cw,-1))/2.-(cw*pow(sw,-1))/2.                                                                          % W+.f W-.f Z     coupling.
+x488x0         |pow(cw,-1)/2.                                                                                                  % Z.f  W-.f W+   Z     coupling.
+x489x0         |-0.5*pow(cw,-1)                                                                                                % W-.f H    W+   Z     coupling.
+x490x0         |-0.5*(vev*pow(cw,-1))                                                                                          % W-.f W+   Z     coupling.
+x491x0         |pow(cw,-1)/2.                                                                                                  % Z.f  W+.f W-   Z     coupling.
+x492x0         |pow(cw,-1)/2.                                                                                                  % W+.f H    W-   Z     coupling.
+x493x0         |(vev*pow(cw,-1))/2.                                                                                            % W+.f W-   Z     coupling.
+x494x0         |cw*pow(sw,-1)                                                                                                  % a    W+   W-   Z     coupling.
+x495x0         |(pow(cw,-2)*pow(sw,-2)*pow(pow(cw,2)+pow(sw,2),2))/2.                                                          % Z.f  Z.f  Z    Z     coupling.
+x496x0         |(pow(cw,-2)*pow(sw,-2)*pow(pow(cw,2)-pow(sw,2),2))/2.                                                          % W+.f W-.f Z    Z     coupling.
+x497x0         |(pow(cw,-2)*pow(sw,-2)*pow(pow(cw,2)+pow(sw,2),2))/2.                                                          % H    H    Z    Z     coupling.
+x498x0         |(vev*pow(cw,-2)*pow(sw,-2)*pow(pow(cw,2)+pow(sw,2),2))/2.                                                      % H    Z    Z     coupling.
+x499x0         |-(pow(cw,2)*pow(sw,-2))                                                                                        % W+   W-   Z    Z     coupling.
+x500x0         |-1                                                                                                             % a    e+   e-    coupling.
+x501x0         |-1                                                                                                             % a    mu+  mu-   coupling.
+x502x0         |-1                                                                                                             % a    ta+  ta-   coupling.
+x503x0         |0.6666666666666666                                                                                             % a    u~   u     coupling.
+x504x0         |0.6666666666666666                                                                                             % a    c~   c     coupling.
+x505x0         |0.6666666666666666                                                                                             % a    t~   t     coupling.
+x506x0         |-0.3333333333333333                                                                                            % a    d~   d     coupling.
+x507x0         |-0.3333333333333333                                                                                            % a    s~   s     coupling.
+x508x0         |-0.3333333333333333                                                                                            % a    b~   b     coupling.
+x509x0         |1                                                                                                              % g    u~   u     coupling.
+x510x0         |1                                                                                                              % g    c~   c     coupling.
+x511x0         |1                                                                                                              % g    t~   t     coupling.
+x512x0         |1                                                                                                              % g    d~   d     coupling.
+x513x0         |1                                                                                                              % g    s~   s     coupling.
+x514x0         |1                                                                                                              % g    b~   b     coupling.
+x515x0         |-0.5*(CKM1x1*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   u~   d     coupling.
+x516x0         |-0.5*(CKM1x2*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   u~   s     coupling.
+x517x0         |-0.5*(CKM1x3*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   u~   b     coupling.
+x518x0         |-0.5*(CKM2x1*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   c~   d     coupling.
+x519x0         |-0.5*(CKM2x2*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   c~   s     coupling.
+x520x0         |-0.5*(CKM2x3*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   c~   b     coupling.
+x521x0         |-0.5*(CKM3x1*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   t~   d     coupling.
+x522x0         |-0.5*(CKM3x2*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   t~   s     coupling.
+x523x0         |-0.5*(CKM3x3*pow(2,-0.5)*pow(sw,-1))                                                                           % W+   t~   b     coupling.
+x524x0         |-0.5*(CKM1x1*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   d~   u     coupling.
+x525x0         |-0.5*(CKM2x1*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   d~   c     coupling.
+x526x0         |-0.5*(CKM3x1*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   d~   t     coupling.
+x527x0         |-0.5*(CKM1x2*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   s~   u     coupling.
+x528x0         |-0.5*(CKM2x2*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   s~   c     coupling.
+x529x0         |-0.5*(CKM3x2*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   s~   t     coupling.
+x530x0         |-0.5*(CKM1x3*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   b~   u     coupling.
+x531x0         |-0.5*(CKM2x3*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   b~   c     coupling.
+x532x0         |-0.5*(CKM3x3*pow(2,-0.5)*pow(sw,-1))                                                                           % W-   b~   t     coupling.
+x533x0         |-0.5*(pow(2,-0.5)*pow(sw,-1))                                                                                  % W+   ve~  e-    coupling.
+x534x0         |-0.5*(pow(2,-0.5)*pow(sw,-1))                                                                                  % W+   vm~  mu-   coupling.
+x535x0         |-0.5*(pow(2,-0.5)*pow(sw,-1))                                                                                  % W+   vt~  ta-   coupling.
+x536x0         |-0.5*(pow(2,-0.5)*pow(sw,-1))                                                                                  % W-   e+   ve    coupling.
+x537x0         |-0.5*(pow(2,-0.5)*pow(sw,-1))                                                                                  % W-   mu+  vm    coupling.
+x538x0         |-0.5*(pow(2,-0.5)*pow(sw,-1))                                                                                  % W-   ta+  vt    coupling.
+x539x0         |-0.08333333333333333*(pow(cw,-1)*pow(sw,-1))                                                                   % Z    u~   u     coupling.
+x539x1         |-3*pow(cw,2)+5*pow(sw,2)                                                                                       % Z    u~   u        coupling.
+x539x2         |3*(pow(cw,2)+pow(sw,2))                                                                                        % Z    u~   u        coupling.
+x540x0         |-0.08333333333333333*(pow(cw,-1)*pow(sw,-1))                                                                   % Z    c~   c     coupling.
+x540x1         |-3*pow(cw,2)+5*pow(sw,2)                                                                                       % Z    c~   c        coupling.
+x540x2         |3*(pow(cw,2)+pow(sw,2))                                                                                        % Z    c~   c        coupling.
+x541x0         |-0.08333333333333333*(pow(cw,-1)*pow(sw,-1))                                                                   % Z    t~   t     coupling.
+x541x1         |-3*pow(cw,2)+5*pow(sw,2)                                                                                       % Z    t~   t        coupling.
+x541x2         |3*(pow(cw,2)+pow(sw,2))                                                                                        % Z    t~   t        coupling.
+x542x0         |(pow(cw,-1)*pow(sw,-1))/12.                                                                                    % Z    d~   d     coupling.
+x542x1         |-3*pow(cw,2)+pow(sw,2)                                                                                         % Z    d~   d        coupling.
+x542x2         |3*(pow(cw,2)+pow(sw,2))                                                                                        % Z    d~   d        coupling.
+x543x0         |(pow(cw,-1)*pow(sw,-1))/12.                                                                                    % Z    s~   s     coupling.
+x543x1         |-3*pow(cw,2)+pow(sw,2)                                                                                         % Z    s~   s        coupling.
+x543x2         |3*(pow(cw,2)+pow(sw,2))                                                                                        % Z    s~   s        coupling.
+x544x0         |(pow(cw,-1)*pow(sw,-1))/12.                                                                                    % Z    b~   b     coupling.
+x544x1         |-3*pow(cw,2)+pow(sw,2)                                                                                         % Z    b~   b        coupling.
+x544x2         |3*(pow(cw,2)+pow(sw,2))                                                                                        % Z    b~   b        coupling.
+x545x0         |-0.25*(pow(cw,-1)*pow(sw,-1)*(pow(cw,2)+pow(sw,2)))                                                            % Z    ve~  ve    coupling.
+x546x0         |-0.25*(pow(cw,-1)*pow(sw,-1)*(pow(cw,2)+pow(sw,2)))                                                            % Z    vm~  vm    coupling.
+x547x0         |-0.25*(pow(cw,-1)*pow(sw,-1)*(pow(cw,2)+pow(sw,2)))                                                            % Z    vt~  vt    coupling.
+x548x0         |(pow(cw,-1)*pow(sw,-1))/4.                                                                                     % Z    e+   e-    coupling.
+x548x1         |-pow(cw,2)+3*pow(sw,2)                                                                                         % Z    e+   e-       coupling.
+x548x2         |pow(cw,2)+pow(sw,2)                                                                                            % Z    e+   e-       coupling.
+x549x0         |(pow(cw,-1)*pow(sw,-1))/4.                                                                                     % Z    mu+  mu-   coupling.
+x549x1         |-pow(cw,2)+3*pow(sw,2)                                                                                         % Z    mu+  mu-      coupling.
+x549x2         |pow(cw,2)+pow(sw,2)                                                                                            % Z    mu+  mu-      coupling.
+x550x0         |(pow(cw,-1)*pow(sw,-1))/4.                                                                                     % Z    ta+  ta-   coupling.
+x550x1         |-pow(cw,2)+3*pow(sw,2)                                                                                         % Z    ta+  ta-      coupling.
+x550x2         |pow(cw,2)+pow(sw,2)                                                                                            % Z    ta+  ta-      coupling.

@@ -1,0 +1,47 @@
+Potencial ZX2
+ Particles
+ Full  name  |A          |A+         | number |2*spin| mass          |width          |color|aux|>LaTex(A)<|>LaTeX(A+)   <|
+Photon       |a          |a          |22      |2     |0              |0              |1    |G  |a         |a             |
+Z            |Z          |Z          |23      |2     |MZ             |!WZ            |1    |G  |Z         |Z             |
+W            |W+         |W-         |24      |2     |MW             |!WW            |1    |G  |W+        |W-            |
+G            |g          |g          |21      |2     |0              |0              |8    |G  |g         |g             |
+Electron-neut|ve         |ve~        |12      |1     |0              |0              |1    |0  |ve        |ve~           |
+Mu-neutrino  |vm         |vm~        |14      |1     |0              |0              |1    |0  |vm        |vm~           |
+Tau-neutrino |vt         |vt~        |16      |1     |0              |0              |1    |0  |vt        |vt~           |
+Electron     |e-         |e+         |11      |1     |Me             |0              |1    |-3 |e-        |e+            |
+Muon         |mu-        |mu+        |13      |1     |MMU            |0              |1    |-3 |mu-       |mu+           |
+Tau          |ta-        |ta+        |15      |1     |MTA            |0              |1    |-3 |ta-       |ta+           |
+u-quark      |u          |u~         |2       |1     |MU             |0              |3    |2  |u         |u~            |
+c-quark      |c          |c~         |4       |1     |MC             |0              |3    |2  |c         |c~            |
+t-quark      |t          |t~         |6       |1     |MT             |!WT            |3    |2  |t         |t~            |
+d-quark      |d          |d~         |1       |1     |MD             |0              |3    |-1 |d         |d~            |
+s-quark      |s          |s~         |3       |1     |MS             |0              |3    |-1 |s         |s~            |
+b-quark      |b          |b~         |5       |1     |MB             |0              |3    |-1 |b         |b~            |
+H            |H          |H          |25      |0     |MH             |!WH            |1    |0  |H         |H             |
+X11          |X11        |X11        |10137   |0     |mX11           |!WX11          |1    |0  |X11       |X11           |
+X12          |X12        |X12        |10012   |0     |mX12           |!WX12          |1    |0  |X12       |X12           |
+X13          |X13        |X13        |10013   |0     |mX13           |!WX13          |1    |0  |X13       |X13           |
+X21          |X21        |X21        |10021   |0     |mX21           |!WX21          |1    |0  |X21       |X21           |
+X22          |X22        |X22        |10022   |0     |mX22           |!WX22          |1    |0  |X22       |X22           |
+X23          |X23        |X23        |10023   |0     |mX23           |!WX23          |1    |0  |X23       |X23           |
+X31          |X31        |X31        |10031   |0     |mX31           |!WX31          |1    |0  |X31       |X31           |
+X32          |X32        |X32        |10032   |0     |mX32           |!WX32          |1    |0  |X32       |X32           |
+X33          |X33        |X33        |10033   |0     |mX33           |!WX33          |1    |0  |X33       |X33           |
+ZL11         |~ZL11      |~ZL11      |10000   |0     |mZL11          |!WZL11         |1    |0  |~ZL11     |~ZL11         |
+ZL12         |~ZL12      |~ZL12      |10001   |0     |mZL12          |!WZL12         |1    |0  |~ZL12     |~ZL12         |
+ZL13         |~ZL13      |~ZL13      |10002   |0     |mZL13          |!WZL13         |1    |0  |~ZL13     |~ZL13         |
+ZL21         |~ZL21      |~ZL21      |10003   |0     |mZL21          |!WZL21         |1    |0  |~ZL21     |~ZL21         |
+ZL22         |~ZL22      |~ZL22      |10004   |0     |mZL22          |!WZL22         |1    |0  |~ZL22     |~ZL22         |
+ZL23         |~ZL23      |~ZL23      |10005   |0     |mZL23          |!WZL23         |1    |0  |~ZL23     |~ZL23         |
+ZL31         |~ZL31      |~ZL31      |10006   |0     |mZL31          |!WZL31         |1    |0  |~ZL31     |~ZL31         |
+ZL32         |~ZL32      |~ZL32      |10007   |0     |mZL32          |!WZL32         |1    |0  |~ZL32     |~ZL32         |
+ZL33         |~ZL33      |~ZL33      |10008   |0     |mZL33          |!WZL33         |1    |0  |~ZL33     |~ZL33         |
+ZR11         |~ZR11      |~ZR11      |10009   |0     |mZR11          |!WZR11         |1    |0  |~ZR11     |~ZR11         |
+ZR12         |~ZR12      |~ZR12      |10010   |0     |mZR12          |!WZR12         |1    |0  |~ZR12     |~ZR12         |
+ZR13         |~ZR13      |~ZR13      |10011   |0     |mZR13          |!WZR13         |1    |0  |~ZR13     |~ZR13         |
+ZR21         |~ZR21      |~ZR21      |10087   |0     |mZR21          |!WZR21         |1    |0  |~ZR21     |~ZR21         |
+ZR22         |~ZR22      |~ZR22      |10078   |0     |mZR22          |!WZR22         |1    |0  |~ZR22     |~ZR22         |
+ZR23         |~ZR23      |~ZR23      |10014   |0     |mZR23          |!WZR23         |1    |0  |~ZR23     |~ZR23         |
+ZR31         |~ZR31      |~ZR31      |10015   |0     |mZR31          |!WZR31         |1    |0  |~ZR31     |~ZR31         |
+ZR32         |~ZR32      |~ZR32      |10016   |0     |mZR32          |!WZR32         |1    |0  |~ZR32     |~ZR32         |
+ZR33         |~ZR33      |~ZR33      |10017   |0     |mZR33          |!WZR33         |1    |0  |~ZR33     |~ZR33         |
